@@ -6077,6 +6077,966 @@ export default {
       "set": "assignments",
       "setLabel": "Assignment 8",
       "sourceNum": 5
+    },
+    {
+      "id": "a1-6",
+      "num": 41,
+      "assignment": 1,
+      "week": 1,
+      "text": "Which file is normally used to transfer a virtual appliance with its configuration and disk images?",
+      "choices": [
+        "A shell history file",
+        "An OVA archive",
+        "A PATH directory",
+        "A plain permission string"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "OVA переносит готовую виртуальную машину с описанием конфигурации и образами дисков. Это отличается от ISO-носителя для установки ОС.",
+      "whyEn": "An OVA packages a virtual appliance, including its configuration and associated disk images.",
+      "note": "Practice question based on Assignment 1; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 1",
+      "sourceNum": 6
+    },
+    {
+      "id": "a1-7",
+      "num": 42,
+      "assignment": 1,
+      "week": 1,
+      "text": "What does uname -r display inside an Ubuntu VM?",
+      "choices": [
+        "The number of installed packages",
+        "The physical disk serial number",
+        "The currently running guest kernel release",
+        "The password of the host user"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "Команда запускается внутри гостевой ОС и сообщает релиз её работающего ядра. Это не версия VirtualBox и не число пакетов.",
+      "whyEn": "uname -r reports the release of the kernel running in the environment where the command executes.",
+      "note": "Practice question based on Assignment 1; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 1",
+      "sourceNum": 7
+    },
+    {
+      "id": "a1-8",
+      "num": 43,
+      "assignment": 1,
+      "week": 5,
+      "text": "Which command displays a summary of RAM and swap rather than filesystem disk usage?",
+      "choices": [
+        "free -h",
+        "df -h",
+        "du -sh .",
+        "pwd"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "free -h показывает оперативную память и swap. df и du относятся к месту на файловых системах и размерам файлов.",
+      "whyEn": "free summarizes memory and swap; df and du describe filesystem space usage.",
+      "note": "Practice question based on Assignment 1; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 1",
+      "sourceNum": 8
+    },
+    {
+      "id": "a1-9",
+      "num": 44,
+      "assignment": 1,
+      "week": 2,
+      "text": "Why is cd normally a shell builtin?",
+      "choices": [
+        "Because directories are executable programs",
+        "Because it must run on a separate computer",
+        "Because it always requires root",
+        "Because it must change the working directory of the current shell"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "Если отдельный дочерний процесс изменит свой каталог, каталог родительской оболочки от этого не изменится. Поэтому cd выполняет сама оболочка.",
+      "whyEn": "A child cannot change its parent shell's working directory; cd must affect the shell itself.",
+      "note": "Practice question based on Assignment 1; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 1",
+      "sourceNum": 9
+    },
+    {
+      "id": "a1-10",
+      "num": 45,
+      "assignment": 1,
+      "week": 2,
+      "text": "In Bash, what does echo '$USER' print?",
+      "choices": [
+        "The current username",
+        "The literal text $USER",
+        "The current user ID number",
+        "Nothing, because single quotes cause an error"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "Одинарные кавычки сохраняют текст буквально: переменная не раскрывается. echo \"$USER\" с двойными кавычками, наоборот, подставит её значение.",
+      "whyEn": "Single quotes suppress variable expansion, so the dollar sign and variable name are printed literally.",
+      "note": "Practice question based on Assignment 1; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 1",
+      "sourceNum": 10
+    },
+    {
+      "id": "a2-6",
+      "num": 46,
+      "assignment": 2,
+      "week": 1,
+      "text": "Which example illustrates a possible trade-off between performance and protection?",
+      "choices": [
+        "Removing every process from memory improves isolation",
+        "A faster clock automatically provides stronger access control",
+        "Additional validation can improve protection while adding overhead",
+        "Protection and performance are always identical goals"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "Проверки доступа и изоляция требуют работы. Они защищают систему, но могут добавлять накладные расходы — это пример возможного конфликта целей.",
+      "whyEn": "Validation and isolation improve protection but can require additional processing work.",
+      "note": "Practice question based on Assignment 2; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 2",
+      "sourceNum": 6
+    },
+    {
+      "id": "a2-7",
+      "num": 47,
+      "assignment": 2,
+      "week": 1,
+      "text": "On a single CPU core, how can timesharing make several interactive programs appear to progress together?",
+      "choices": [
+        "By rapidly switching CPU execution between them",
+        "By executing all their instructions at exactly the same instant",
+        "By removing every timer interrupt",
+        "By giving every program permanent ownership of the CPU"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "На одном ядре инструкции задач чередуются во времени. Быстрые переключения создают ощущение одновременной работы; буквальный параллелизм требует дополнительных вычислительных ресурсов.",
+      "whyEn": "Timesharing interleaves execution using short CPU turns, providing concurrency without requiring simultaneous execution on one core.",
+      "note": "Practice question based on Assignment 2; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 2",
+      "sourceNum": 7
+    },
+    {
+      "id": "a2-8",
+      "num": 48,
+      "assignment": 2,
+      "week": 1,
+      "text": "Which statement correctly distinguishes a program from a process?",
+      "choices": [
+        "A program is always privileged; a process never is",
+        "A process is only a file name",
+        "A program cannot have more than one running instance",
+        "A program is stored instructions; a process is a running instance with state"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "Один сохранённый executable может запускаться несколько раз. Каждый выполняющийся экземпляр имеет своё состояние, например PID и ресурсы.",
+      "whyEn": "A process is an executing instance of a program, with execution state and allocated resources.",
+      "note": "Practice question based on Assignment 2; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 2",
+      "sourceNum": 8
+    },
+    {
+      "id": "a2-9",
+      "num": 49,
+      "assignment": 2,
+      "week": 1,
+      "text": "Does running an application as root mean all its instructions execute in kernel mode?",
+      "choices": [
+        "Yes, UID 0 is the CPU kernel-mode bit",
+        "No, root user identity and CPU execution mode are different concepts",
+        "Yes, sudo permanently turns the shell into the kernel",
+        "No, root applications cannot make system calls"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "Root — привилегированная учётная запись, kernel mode — режим CPU. Даже root-приложение обычно исполняет свой код в user mode и обращается к ядру через контролируемые интерфейсы.",
+      "whyEn": "Root is an account privilege level; kernel mode is a processor execution mode. They are distinct.",
+      "note": "Practice question based on Assignment 2; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 2",
+      "sourceNum": 9
+    },
+    {
+      "id": "a2-10",
+      "num": 50,
+      "assignment": 2,
+      "week": 1,
+      "text": "Why is a file an operating-system abstraction?",
+      "choices": [
+        "It is always a physical disk sector",
+        "It removes the need for permissions",
+        "It lets programs work with named data without controlling raw disk details",
+        "It guarantees that every read accesses a physical disk"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "Программа открывает файл по имени и читает данные, не управляя дорожками или секторами. Данные также могут быть в кэше, поэтому read не всегда вызывает физическое чтение диска.",
+      "whyEn": "The file interface hides low-level storage details behind a convenient named-data object.",
+      "note": "Practice question based on Assignment 2; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 2",
+      "sourceNum": 10
+    },
+    {
+      "id": "a3-6",
+      "num": 51,
+      "assignment": 3,
+      "week": 2,
+      "text": "You are in /home/alex/projects and Music is in /home/alex. Which command changes to Music and prints its path only if the change succeeds?",
+      "choices": [
+        "cd ../Music && pwd",
+        "cd Music || pwd",
+        "pwd ../Music",
+        "cd /Music && history"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": ".. обозначает родительский каталог. Из projects путь ../Music ведёт в /home/alex/Music. && запускает pwd только при успешном cd.",
+      "whyEn": "The relative path ../Music starts from the parent directory, and && checks that cd succeeded.",
+      "note": "Practice question based on Assignment 3; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 3",
+      "sourceNum": 6
+    },
+    {
+      "id": "a3-7",
+      "num": 52,
+      "assignment": 3,
+      "week": 3,
+      "text": "A task says to type python3 my and press TAB. What should you actually do?",
+      "choices": [
+        "Type the literal characters <TAB> into the filename",
+        "Add TAB to the Python source code",
+        "Press the Tab key to ask the shell to complete a matching filename",
+        "Run a program named TAB before Python"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "TAB в инструкции обозначает действие клавишей. Shell дополняет имя, если может определить подходящее совпадение, а не добавляет текст <TAB> в команду.",
+      "whyEn": "Tab completion is an interactive shell action, not literal command text or Python syntax.",
+      "note": "Practice question based on Assignment 3; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 3",
+      "sourceNum": 7
+    },
+    {
+      "id": "a3-8",
+      "num": 53,
+      "assignment": 3,
+      "week": 3,
+      "text": "Which grep option makes a search ignore uppercase/lowercase differences?",
+      "choices": [
+        "-v",
+        "-c",
+        "-o",
+        "-i"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "-i включает поиск без учёта регистра. -v выбирает несовпавшие строки, -c считает строки, -o выводит сами совпадения.",
+      "whyEn": "grep -i performs case-insensitive matching; the other options affect selection or output format.",
+      "note": "Practice question based on Assignment 3; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 3",
+      "sourceNum": 8
+    },
+    {
+      "id": "a3-9",
+      "num": 54,
+      "assignment": 3,
+      "week": 4,
+      "text": "What does tar -czf project.tar.gz project combine?",
+      "choices": [
+        "Only file ownership changes",
+        "Archiving with gzip compression",
+        "Only a symbolic-link operation",
+        "A process-priority change"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "tar объединяет файлы в архив; -z подключает gzip-сжатие; -f указывает имя архива. Архивирование и сжатие — разные операции, которые здесь используются вместе.",
+      "whyEn": "tar creates an archive, -z compresses it with gzip, and -f names the archive file.",
+      "note": "Practice question based on Assignment 3; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 3",
+      "sourceNum": 9
+    },
+    {
+      "id": "a3-10",
+      "num": 55,
+      "assignment": 3,
+      "week": 3,
+      "text": "In command1 | command2, which stream is normally connected to command2?",
+      "choices": [
+        "The exit status integer of command1",
+        "Both stdout and stderr automatically",
+        "Standard output of command1",
+        "The entire shell history"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "Обычный pipe передаёт stdout первой команды на stdin второй. Stderr остаётся отдельным потоком, пока его явно не перенаправили.",
+      "whyEn": "A normal pipeline connects the first command's stdout to the next command's stdin.",
+      "note": "Practice question based on Assignment 3; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 3",
+      "sourceNum": 10
+    },
+    {
+      "id": "a4-6",
+      "num": 56,
+      "assignment": 4,
+      "week": 2,
+      "text": "When does Bash normally display the PS2 continuation prompt?",
+      "choices": [
+        "When a command needs more input, such as an unclosed quote",
+        "Whenever the current user becomes root",
+        "Only when a second CPU is installed",
+        "Whenever an alias is deleted"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "PS1 — основное приглашение. PS2 появляется, когда команда ещё не закончена: например, не закрыта кавычка или ожидается продолжение конструкции.",
+      "whyEn": "PS2 is the continuation prompt used when the shell needs more input to complete a command.",
+      "note": "Practice question based on Assignment 4; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 4",
+      "sourceNum": 6
+    },
+    {
+      "id": "a4-7",
+      "num": 57,
+      "assignment": 4,
+      "week": 3,
+      "text": "In the regex ^r.*/bin/bash$, what do ^ and $ require?",
+      "choices": [
+        "The same word must occur twice",
+        "The line must contain exactly one character",
+        "The command must run as root",
+        "The match starts at the line beginning and ends at the line end"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "^ привязывает начало, $ — конец строки. Здесь строка должна начинаться с r и заканчиваться /bin/bash, а .* допускает промежуточные символы.",
+      "whyEn": "The anchors constrain the match to the beginning and end of the line.",
+      "note": "Practice question based on Assignment 4; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 4",
+      "sourceNum": 7
+    },
+    {
+      "id": "a4-8",
+      "num": 58,
+      "assignment": 4,
+      "week": 2,
+      "text": "Where can a personal alias be saved so future interactive Bash sessions normally load it?",
+      "choices": [
+        "/proc/meminfo",
+        "~/.bashrc",
+        "/dev/null",
+        "The kernel release string"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "alias в текущей сессии обычно временный. Запись в ~/.bashrc позволяет новым интерактивным Bash-сеансам загрузить определение. Уже открытой оболочке нужно применить его отдельно.",
+      "whyEn": "The user's .bashrc is normally read by interactive non-login Bash shells and is a common place for personal aliases.",
+      "note": "Practice question based on Assignment 4; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 4",
+      "sourceNum": 8
+    },
+    {
+      "id": "a4-9",
+      "num": 59,
+      "assignment": 4,
+      "week": 4,
+      "text": "What does chmod +x hello.sh followed by ./hello.sh normally accomplish?",
+      "choices": [
+        "Compiles the script into the kernel",
+        "Changes the script owner",
+        "Makes the script executable and runs it from the current directory",
+        "Copies the script to every PATH directory"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "chmod добавляет execute bit. ./ означает текущий каталог: shell не обязан искать текущую папку в PATH. Для выполнения также нужны корректный script/interpreter и доступ по пути.",
+      "whyEn": "The execute bit allows direct execution, and ./ explicitly refers to the current directory.",
+      "note": "Practice question based on Assignment 4; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 4",
+      "sourceNum": 9
+    },
+    {
+      "id": "a4-10",
+      "num": 60,
+      "assignment": 4,
+      "week": 3,
+      "text": "What does grep -rl --include='*.sh' 'echo' project | wc -l count for ordinary filenames without embedded newlines?",
+      "choices": [
+        "Matching .sh filenames, one per matching file",
+        "Every occurrence of echo across the entire system",
+        "The total size of project",
+        "Only lines that contain no echo"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "-r ищет рекурсивно, --include ограничивает имена, -l выводит имя каждого подходящего файла один раз. Поэтому считаются файлы, а не все строки или совпадения внутри них.",
+      "whyEn": "grep -l prints one name for each matching file; wc -l counts those names.",
+      "note": "Practice question based on Assignment 4; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 4",
+      "sourceNum": 10
+    },
+    {
+      "id": "a5-6",
+      "num": 61,
+      "assignment": 5,
+      "week": 5,
+      "text": "Which command selects journal entries from the current boot?",
+      "choices": [
+        "journalctl --every-process",
+        "history -b",
+        "journalctl -b",
+        "uname -b"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "-b выбирает загрузку; без дополнительного идентификатора или смещения это текущая загрузка. Это журнал событий, а не история shell-команд.",
+      "whyEn": "journalctl -b filters the journal to the current boot by default.",
+      "note": "Practice question based on Assignment 5; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 5",
+      "sourceNum": 6
+    },
+    {
+      "id": "a5-7",
+      "num": 62,
+      "assignment": 5,
+      "week": 5,
+      "text": "ps -p 1 shows systemd in your VM. What does that identify?",
+      "choices": [
+        "The PID of the most recently started sleep command",
+        "The first userspace process in that PID namespace",
+        "The CPU with the highest utilization",
+        "A program that must be stopped for every assignment"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "PID 1 в этой VM — systemd, системный процесс. Для опыта с сигналами используй PID своего sleep из $!, а не системный PID 1.",
+      "whyEn": "PID 1 identifies the namespace's initial userspace process; in this VM that process is systemd.",
+      "note": "Practice question based on Assignment 5; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 5",
+      "sourceNum": 7
+    },
+    {
+      "id": "a5-8",
+      "num": 63,
+      "assignment": 5,
+      "week": 5,
+      "text": "What is the best interpretation of runlevel: command not found?",
+      "choices": [
+        "The runlevel utility is unavailable or not found through PATH",
+        "The system cannot have any active systemd target",
+        "The kernel has stopped executing",
+        "The current account was deleted"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "Сообщение относится к поиску команды, а не доказывает отсутствие target. В systemd-системе можно исследовать targets через systemctl.",
+      "whyEn": "A missing command is a utility or command-search issue, not proof that systemd has no active targets.",
+      "note": "Practice question based on Assignment 5; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 5",
+      "sourceNum": 8
+    },
+    {
+      "id": "a5-9",
+      "num": 64,
+      "assignment": 5,
+      "week": 5,
+      "text": "After adding a job, what does crontab -l alone prove?",
+      "choices": [
+        "The job has already executed successfully",
+        "The output file contains the expected message",
+        "The job runs every second",
+        "The crontab contains the configured entry"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "crontab -l показывает настройки. Чтобы подтвердить запуск, нужно дождаться времени и проверить реальный вывод или журнал; одна запись этого не доказывает.",
+      "whyEn": "Listing the crontab verifies configuration, while actual execution requires output or log evidence.",
+      "note": "Practice question based on Assignment 5; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 5",
+      "sourceNum": 9
+    },
+    {
+      "id": "a5-10",
+      "num": 65,
+      "assignment": 5,
+      "week": 5,
+      "text": "Which termination signal cannot be caught by a process for cleanup?",
+      "choices": [
+        "SIGTERM",
+        "SIGKILL",
+        "SIGCONT",
+        "SIGHUP"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "SIGKILL принудительно завершает процесс и не может быть обработан программой. SIGTERM — запрос завершиться, который программа может обработать для очистки.",
+      "whyEn": "SIGKILL cannot be caught or handled; SIGTERM may allow the program to perform cleanup.",
+      "note": "Practice question based on Assignment 5; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 5",
+      "sourceNum": 10
+    },
+    {
+      "id": "a6-6",
+      "num": 66,
+      "assignment": 6,
+      "week": 7,
+      "text": "What does useradd -m alex request in addition to creating the account?",
+      "choices": [
+        "Creating a virtual machine",
+        "Setting the niceness value to -m",
+        "Creating the user's home directory",
+        "Changing all file groups to alex"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "Флаг -m запрашивает создание домашнего каталога. Пароль настраивается отдельно через passwd; создание аккаунта не доказывает успешный password login.",
+      "whyEn": "The -m option requests creation of the new account's home directory.",
+      "note": "Practice question based on Assignment 6; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 6",
+      "sourceNum": 6
+    },
+    {
+      "id": "a6-7",
+      "num": 67,
+      "assignment": 6,
+      "week": 7,
+      "text": "Why can nina belong to research as her primary group even if her name is absent from that group's member list in /etc/group?",
+      "choices": [
+        "The primary GID is recorded in her account record",
+        "Primary groups never affect access checks",
+        "Every user belongs to every group",
+        "/etc/group lists running processes"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "Основной GID хранится в записи passwd. Список участников group в основном используется для дополнительных memberships; проверь id nina и запись аккаунта.",
+      "whyEn": "Primary membership is determined by the account's primary GID, not only the group file's explicit member list.",
+      "note": "Practice question based on Assignment 6; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 6",
+      "sourceNum": 7
+    },
+    {
+      "id": "a6-8",
+      "num": 68,
+      "assignment": 6,
+      "week": 7,
+      "text": "After changing a user's supplementary groups, why might an already running shell still lack the new group?",
+      "choices": [
+        "Group names are case-insensitive passwords",
+        "usermod changes only file sizes",
+        "The kernel must always be reinstalled",
+        "Existing processes keep their current credentials; a new login session normally gets the updated groups"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "Изменение базы аккаунтов не обновляет автоматически credentials всех запущенных процессов. Новый login-сеанс получает актуальные группы; newgrp может создать сеанс с другой активной группой.",
+      "whyEn": "An existing process retains its credentials; a new login normally loads updated supplementary memberships.",
+      "note": "Practice question based on Assignment 6; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 6",
+      "sourceNum": 8
+    },
+    {
+      "id": "a6-9",
+      "num": 69,
+      "assignment": 6,
+      "week": 7,
+      "text": "What is the distinction between passwd alex and groupadd research?",
+      "choices": [
+        "Both set the same primary GID",
+        "passwd changes account password data; groupadd creates a group",
+        "passwd creates a group; groupadd changes a login shell",
+        "Both only display existing accounts"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "passwd управляет паролем пользователя. groupadd создаёт группу; это не та же операция, что назначить пользователю членство в ней.",
+      "whyEn": "Password management, group creation and group membership are separate administrative operations.",
+      "note": "Practice question based on Assignment 6; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 6",
+      "sourceNum": 9
+    },
+    {
+      "id": "a6-10",
+      "num": 70,
+      "assignment": 6,
+      "week": 7,
+      "text": "An account expires 30 days after 18 October 2026. Which date is that?",
+      "choices": [
+        "18 November 2026",
+        "30 October 2026",
+        "17 November 2026",
+        "17 December 2026"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "От 18 октября до 31 октября — 13 дней, затем ещё 17 дней ноября: 13+17=30. date -d вычисляет дату относительно выбранного дня.",
+      "whyEn": "Adding thirty days to 18 October gives 17 November: thirteen remaining October days plus seventeen November days.",
+      "note": "Practice question based on Assignment 6; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 6",
+      "sourceNum": 10
+    },
+    {
+      "id": "a7-6",
+      "num": 71,
+      "assignment": 7,
+      "week": 8,
+      "text": "A file starts with ordinary mode 750, then chmod g+w file and chmod 750 file are run. What is its final ordinary mode?",
+      "choices": [
+        "750",
+        "770",
+        "777",
+        "752"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "Первый вызов делает group=rwx и mode=770. Второй числовой chmod снова задаёт 750, убирая group write. Последняя команда определяет итог.",
+      "whyEn": "The numeric chmod resets the ordinary mode to 750 after the earlier symbolic addition.",
+      "note": "Practice question based on Assignment 7; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 7",
+      "sourceNum": 6
+    },
+    {
+      "id": "a7-7",
+      "num": 72,
+      "assignment": 7,
+      "week": 8,
+      "text": "Which command changes both owner and group of report.txt to team1 and projectgroup?",
+      "choices": [
+        "chmod team1:projectgroup report.txt",
+        "groupadd report.txt",
+        "export report.txt=team1",
+        "chown team1:projectgroup report.txt"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "chown owner:group меняет владельца и группу при достаточных полномочиях. chmod меняет биты прав, а не имена владельца и группы.",
+      "whyEn": "chown accepts the owner:group form; chmod instead changes permission bits.",
+      "note": "Practice question based on Assignment 7; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 7",
+      "sourceNum": 7
+    },
+    {
+      "id": "a7-8",
+      "num": 73,
+      "assignment": 7,
+      "week": 8,
+      "text": "You enabled setgid on a protected directory and created inherited.txt as team1. What best verifies the new file's group without opening the directory to everyone?",
+      "choices": [
+        "chmod 777 the directory before every check",
+        "Run stat or ls with an authorized identity, such as sudo stat on the file",
+        "Assume it worked because no command was printed",
+        "Use echo to change the group name"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "Проверяй фактические метаданные с достаточными правами. Permission denied у обычного ls не показывает группу нового файла и не требует ослаблять mode каталога.",
+      "whyEn": "Use an authorized metadata check to see the new file's group without weakening directory permissions.",
+      "note": "Practice question based on Assignment 7; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 7",
+      "sourceNum": 8
+    },
+    {
+      "id": "a7-9",
+      "num": 74,
+      "assignment": 7,
+      "week": 8,
+      "text": "A new directory requests mode 777 with umask 027 and no default ACL. Which mode results?",
+      "choices": [
+        "640",
+        "777",
+        "750",
+        "027"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "У owner остаётся rwx; у group убирается w и остаётся r-x; у others убирается всё. Получается 750. Для обычного файла стартовый mode обычно 666, поэтому результат другой.",
+      "whyEn": "Applying the creation mask to 777 removes group write and all others bits, yielding 750.",
+      "note": "Practice question based on Assignment 7; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 7",
+      "sourceNum": 9
+    },
+    {
+      "id": "a7-10",
+      "num": 75,
+      "assignment": 7,
+      "week": 8,
+      "text": "Does changing umask to 027 automatically change the permissions of existing files?",
+      "choices": [
+        "No, umask affects creation; use chmod to change existing modes",
+        "Yes, all existing files immediately become 640",
+        "Yes, every directory becomes 027",
+        "Yes, all owners become root"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "Umask влияет на запрашиваемые права при создании новых объектов. Уже существующие файлы не пересчитываются автоматически: их mode меняют chmod.",
+      "whyEn": "The creation mask applies to new objects; it does not retroactively rewrite existing permission bits.",
+      "note": "Practice question based on Assignment 7; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 7",
+      "sourceNum": 10
+    },
+    {
+      "id": "a8-6",
+      "num": 76,
+      "assignment": 8,
+      "week": 9,
+      "text": "Why can a symbolic link point across filesystems while a normal hard link cannot?",
+      "choices": [
+        "Symbolic links encrypt their target",
+        "A hard link always has two owners",
+        "Hard links contain the target's full file contents",
+        "A symlink stores a pathname; a hard link refers to an inode in one filesystem"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "Symlink хранит путь, который может вести на другую файловую систему. Hard link — имя inode внутри конкретной FS; одного номера inode вне этой FS недостаточно.",
+      "whyEn": "A pathname can cross mount boundaries, while hard links refer to an inode within a single filesystem.",
+      "note": "Practice question based on Assignment 8; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 8",
+      "sourceNum": 6
+    },
+    {
+      "id": "a8-7",
+      "num": 77,
+      "assignment": 8,
+      "week": 9,
+      "text": "If you edit a file through its hard-link name, what does the original name normally show?",
+      "choices": [
+        "An independent unchanged backup",
+        "The same modified data",
+        "A random copy from another filesystem",
+        "An encrypted version of the old content"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "Два hard-link имени относятся к одному файлу. Изменение содержимого видно через оба имени: hard link не является независимой резервной копией.",
+      "whyEn": "Both names refer to the same inode and file data, so an in-place edit is visible through either name.",
+      "note": "Practice question based on Assignment 8; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 8",
+      "sourceNum": 7
+    },
+    {
+      "id": "a8-8",
+      "num": 78,
+      "assignment": 8,
+      "week": 9,
+      "text": "What does chmod 700 /tmp/test_session do?",
+      "choices": [
+        "Makes all contained files world-readable",
+        "Deletes the directory at logout",
+        "Grants directory rwx to the owner and no ordinary group/others permissions",
+        "Sets the sticky bit"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "700=владелец rwx, группа --- и остальные ---. Это закрывает обычный доступ по пути другим пользователям, но не исключает привилегированный доступ.",
+      "whyEn": "Mode 700 restricts ordinary directory access to its owner; it does not set a special sticky bit.",
+      "note": "Practice question based on Assignment 8; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 8",
+      "sourceNum": 8
+    },
+    {
+      "id": "a8-9",
+      "num": 79,
+      "assignment": 8,
+      "week": 9,
+      "text": "Which long-listing permission string corresponds to a directory with mode 1775?",
+      "choices": [
+        "drwxrwxr-t",
+        "drwxrwxrwt",
+        "drwxr-s---",
+        "-rw-r-----"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "1 — sticky; 775 даёт owner/group rwx и others r-x. Sticky при execute у others отображается как t, поэтому drwxrwxr-t. 1777 отличался бы записью для others.",
+      "whyEn": "1775 combines sticky with 775, producing drwxrwxr-t rather than the 1777 string drwxrwxrwt.",
+      "note": "Practice question based on Assignment 8; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 8",
+      "sourceNum": 9
+    },
+    {
+      "id": "a8-10",
+      "num": 80,
+      "assignment": 8,
+      "week": 9,
+      "text": "Why does a listing of drwxrwxrwt alone not fully demonstrate sticky-bit deletion behavior?",
+      "choices": [
+        "Because sticky bits never apply to directories",
+        "Because the listing removes the sticky bit",
+        "Because files have no owners",
+        "It shows the configured bit, but a behavioral test needs another user attempting to remove a file they do not own"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "ls подтверждает установленный mode. Для демонстрации поведения нужны разные владельцы и попытка удалить чужую запись, учитывая права и исключения.",
+      "whyEn": "Metadata verifies configuration; demonstrating enforcement requires an appropriate cross-user deletion test.",
+      "note": "Practice question based on Assignment 8; prepared for revision, not an original midterm/endterm question.",
+      "source": "assignment",
+      "set": "assignments",
+      "setLabel": "Assignment 8",
+      "sourceNum": 10
     }
   ]
 };

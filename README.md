@@ -26,4 +26,6 @@ Run `npm run build:vercel` to verify the Vercel output locally. This build uses 
 
 ## Assignment question practice
 
-The Previous questions section includes the existing 58 midterm/endterm questions and 40 new questions based on Assignments 1-8 (five per assignment). Choose the Assignments set to study only those 40, or All sets to mix them with the previous questions. Practice 40 random starts a saved session with up to 40 unique questions from the current filters, with randomized answer choices and RU/EN feedback after submission. Existing questions and saved progress IDs are retained. The mock-final pool also includes an Assignment practice option and a 40-question count where available.
+The Previous questions section includes the existing 58 midterm/endterm questions and 80 new questions based on Assignments 1-8 (ten per assignment). Choose the Assignments set to study only those 80, or All sets to mix them with the previous questions. Practice 40 random starts a saved session with up to 40 unique questions from the current filters, with randomized answer choices and RU/EN feedback after submission. Existing questions and saved progress IDs are retained. The mock-final pool also includes an Assignment practice option and a 40-question count where available.
+
+Each individual assignment is also selectable in the Question set filter with its ten questions. Random practice uses up to forty questions from the current filter; a single assignment therefore gives ten randomized questions.

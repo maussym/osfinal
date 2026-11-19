@@ -170,7 +170,7 @@ function dashboard() {
   const best=Math.max(0,...state.history.filter(a=>a.mode==='mock').map(a=>percent(a.correct,a.count)));
   return '<section class="hero" aria-labelledby="hero-title"><canvas class="hero-canvas" aria-hidden="true"></canvas><div class="hero-content"><div class="eyebrow">YOUR FINAL, ONE TOPIC AT A TIME</div><h1 id="hero-title">Operating<span>Systems</span></h1><p>Understand the system.<br>Be ready for the question.</p><div class="actions">'+link('lesson/'+current.id,first?'Continue learning':'Review lessons','','primary')+link('exam',state.active?'Resume practice':'Practice for final','timer')+'</div></div><div class="hero-terminal" aria-hidden="true"><div class="terminal-bar"><span></span><span></span><span></span><small>os-study / bash</small></div><div class="terminal-body"><p><b>$</b> whoami</p><strong>ready-to-learn</strong><p><b>$</b> ./prepare.sh</p><div class="terminal-line">kernel <span>understood</span></div><div class="terminal-line">permissions <span>decoded</span></div><div class="terminal-line">final <span class="cursor">loading_</span></div></div></div></section>'+
   '<div class="stats">'+stat('book',countDone()+'/'+course.lessons.length,'Study topics completed')+stat('layers',mastered()+'/'+course.cards.length,'Flashcards known')+stat('target',state.history.some(a=>a.mode==='mock')?best+'%':'—','Best practice score')+'</div>'+
-  '<section class="section"><div class="section-head"><h2>Choose your next step</h2></div><div class="tile-grid">'+tile('sample','file','amber','Previous questions','58 previous + 40 assignment questions')+tile('cards','layers','purple','Flashcards','40 concepts · English + Russian')+tile('code','code','blue','Bash lab','8 scripts, explained step by step')+'</div></section>'+
+  '<section class="section"><div class="section-head"><h2>Choose your next step</h2></div><div class="tile-grid">'+tile('sample','file','amber','Previous questions','58 previous + 80 assignment questions')+tile('cards','layers','purple','Flashcards','40 concepts · English + Russian')+tile('code','code','blue','Bash lab','8 scripts, explained step by step')+'</div></section>'+
   '<section class="section"><div class="section-head"><div><h2>Your course</h2><p class="section-description">Nine published lectures, plus syllabus revision.</p></div>'+link('sources','PDF & materials','','ghost')+'</div><div class="grid-2">'+course.lessons.map(lessonCard).join('')+'</div></section>';
 }
 function table(block) {
@@ -245,7 +245,7 @@ function sampleCard(q) {
 }
 function filteredBank() {
   const match = filterText.trim().toLowerCase();
-  return questionBank.filter(q => (!filterWeek || q.week === filterWeek) && (filterSet==='all'||q.set===filterSet) && (!match || [q.text,...q.choices].join(' ').toLowerCase().includes(match)));
+  return questionBank.filter(q => (!filterWeek || q.week === filterWeek) && (filterSet==='all'||q.set===filterSet||(/^a[1-8]$/.test(filterSet)&&q.assignment===Number(filterSet.slice(1)))) && (!match || [q.text,...q.choices].join(' ').toLowerCase().includes(match)));
 }
 function sampleList() {
   const list = filteredBank();
@@ -257,9 +257,9 @@ function refreshBank() {
   if(button){ const count=Math.min(40,filteredBank().length); button.disabled=!count; button.textContent='Practice '+count+' random'; }
 }
 function samplePage() {
-  return head('Previous questions + assignments','58 midterm/endterm questions + 40 questions from Assignments 1–8. English questions, RU / EN explanations.',action('random-bank','Practice '+Math.min(40,filteredBank().length)+' random','primary',{disabled:!filteredBank().length}))+
-  '<div class="source-disclaimer">The 58 previous questions are from your notes. The 40 assignment questions are new revision questions, five per assignment. Practice randomizes questions and answer choices; mistakes and unfinished sessions are saved.</div>'+
-  '<div class="filters"><label>Search<input type="search" id="sample-search" value="'+escape(filterText)+'" placeholder="e.g. chmod, SSH, kernel"></label><label>Question set<select id="sample-set">'+[['all','All sets (98)'],['midterm-a','Midterm · set A (20)'],['midterm-b','Midterm · set B (18)'],['endterm','Endterm (20)'],['assignments','Assignments 1–8 (40)']].map(([v,t])=>'<option value="'+v+'"'+(filterSet===v?' selected':'')+'>'+t+'</option>').join('')+'</select></label><label>Topic<select id="sample-week">'+options(filterWeek)+'</select></label></div><div class="list" id="sample-list">'+sampleList()+'</div>';
+  return head('Previous questions + assignments','58 midterm/endterm questions + 80 questions from Assignments 1–8. English questions, RU / EN explanations.',action('random-bank','Practice '+Math.min(40,filteredBank().length)+' random','primary',{disabled:!filteredBank().length}))+
+  '<div class="source-disclaimer">The 58 previous questions are from your notes. The 80 assignment questions are new revision questions, ten per assignment. Practice randomizes questions and answer choices; mistakes and unfinished sessions are saved.</div>'+
+  '<div class="filters"><label>Search<input type="search" id="sample-search" value="'+escape(filterText)+'" placeholder="e.g. chmod, SSH, kernel"></label><label>Question set<select id="sample-set">'+[['all','All sets (138)'],['midterm-a','Midterm · set A (20)'],['midterm-b','Midterm · set B (18)'],['endterm','Endterm (20)'],['assignments','Assignments 1–8 (80)'],...Array.from({length:8},(_,i)=>['a'+(i+1),'Assignment '+(i+1)+' (10)'])].map(([v,t])=>'<option value="'+v+'"'+(filterSet===v?' selected':'')+'>'+t+'</option>').join('')+'</select></label><label>Topic<select id="sample-week">'+options(filterWeek)+'</select></label></div><div class="list" id="sample-list">'+sampleList()+'</div>';
 }
 function availableCards() {
   return course.cards.filter(c => (!cardWeek || c.week === cardWeek) &&
@@ -307,9 +307,9 @@ function progressPage() {
 
 const makeMode=(label,questions)=>({label,questions,counts:[...new Set([5,10,20,30,40,50,Math.min(100,questions.length)].filter(n=>n<=questions.length))].sort((a,b)=>a-b)});
 const modes = {
- mixed:makeMode('All questions · 128',allQuestions),
- bank:makeMode('Previous + assignments · 98',questionBank),
- assignments:makeMode('Assignment practice · 40',assignmentQuestions),
+ mixed:makeMode('All questions · 168',allQuestions),
+ bank:makeMode('Previous + assignments · 138',questionBank),
+ assignments:makeMode('Assignment practice · 80',assignmentQuestions),
  sample:makeMode('All previous questions · 58',course.samples),
  midtermA:makeMode('Midterm set A · 20',course.samples.filter(q=>q.set==='midterm-a')),
  midtermB:makeMode('Midterm set B · 18',course.samples.filter(q=>q.set==='midterm-b')),
@@ -485,7 +485,7 @@ document.addEventListener('click', event => {
     if(activeOrToast()) return;
     const pool=filteredBank();
     if(!pool.length) return;
-    newAttempt(shuffle(pool).slice(0,40),{mode:'bank',title:filterSet==='assignments'?'Assignments · random practice':'Question bank · random practice'});
+    newAttempt(shuffle(pool).slice(0,40),{mode:'bank',title:/^a[1-8]$/.test(filterSet)?'Assignment '+filterSet.slice(1)+' · random practice':filterSet==='assignments'?'Assignments · random practice':'Question bank · random practice'});
   }
   if (name==='menu') {
     if (!mobileLayout.matches) {
@@ -613,7 +613,7 @@ function syncPanel() {
 function sourcesPage() {
  return head('Your materials','The course, your previous questions and the complete study guide.')+
  '<div class="grid-2"><article class="panel material-card"><span class="eyebrow">STUDY GUIDE · RU / EN</span><h2>All your OS notes</h2><p>41 pages with commands, examples, explanations and revision tables.</p><a class="btn primary" href="/OS_Study_Guide_RU_EN.pdf" target="_blank" rel="noopener">Open PDF</a></article><article class="panel material-card"><span class="eyebrow">COURSE SOURCE</span><h2>AITU LMS</h2><p>Operating Systems | Turysbek Nazym. Nine published lectures. The final test was empty when checked.</p><a class="btn secondary" href="https://lms.astanait.edu.kz/course/view.php?id=2297" target="_blank" rel="noopener">Open course</a></article></div>'+
- '<section class="panel section notes"><h2>What is in this site</h2><ul><li>58 previous questions from your uploaded midterm/endterm notes. Midterm set B omits Q14 and Q15 in the supplied file; they were not invented.</li><li>40 assignment questions, five per assignment, with randomized practice and saved mistake review.</li><li>30 additional course practice questions.</li><li>40 flashcards, 8 Bash examples, 9 lecture topics plus syllabus/revision content. Topic 10 is revision, not an uploaded Lecture-10.</li><li>Practice 9 and 10 point to NDG final activities. Internal NetAcad lessons were not opened.</li></ul><h2>Source notes and corrections</h2><p>Equivalent answers in midterm B Q16 and endterm Q1 are both accepted. The wording about /etc, boot logs, host keys and the lowercase k key in top is clarified. Original wording is available in the relevant explanation.</p><p>Technical references: <a href="https://man7.org/linux/man-pages/man1/top.1.html" target="_blank" rel="noopener">top manual</a>, <a href="https://man7.org/linux/man-pages/man1/cp.1.html" target="_blank" rel="noopener">GNU cp manual</a>, <a href="https://man7.org/linux/man-pages/man1/dmesg.1.html" target="_blank" rel="noopener">dmesg manual</a>.</p><h2>Progress that stays with you</h2><p>'+(localOnly?'Progress is saved automatically in this browser and survives reloads. Export and import a JSON backup to move it to another browser or device.':'Progress syncs to your signed-in account, with a local backup for network interruptions. Export a JSON backup to keep a separate copy.')+' The PDF is for personal study.</p></section>';
+ '<section class="panel section notes"><h2>What is in this site</h2><ul><li>58 previous questions from your uploaded midterm/endterm notes. Midterm set B omits Q14 and Q15 in the supplied file; they were not invented.</li><li>80 assignment questions, ten per assignment, with randomized practice and saved mistake review.</li><li>30 additional course practice questions.</li><li>40 flashcards, 8 Bash examples, 9 lecture topics plus syllabus/revision content. Topic 10 is revision, not an uploaded Lecture-10.</li><li>Practice 9 and 10 point to NDG final activities. Internal NetAcad lessons were not opened.</li></ul><h2>Source notes and corrections</h2><p>Equivalent answers in midterm B Q16 and endterm Q1 are both accepted. The wording about /etc, boot logs, host keys and the lowercase k key in top is clarified. Original wording is available in the relevant explanation.</p><p>Technical references: <a href="https://man7.org/linux/man-pages/man1/top.1.html" target="_blank" rel="noopener">top manual</a>, <a href="https://man7.org/linux/man-pages/man1/cp.1.html" target="_blank" rel="noopener">GNU cp manual</a>, <a href="https://man7.org/linux/man-pages/man1/dmesg.1.html" target="_blank" rel="noopener">dmesg manual</a>.</p><h2>Progress that stays with you</h2><p>'+(localOnly?'Progress is saved automatically in this browser and survives reloads. Export and import a JSON backup to move it to another browser or device.':'Progress syncs to your signed-in account, with a local backup for network interruptions. Export a JSON backup to keep a separate copy.')+' The PDF is for personal study.</p></section>';
 }
 document.querySelector('#backup-file').addEventListener('change',async event=>{
  const file=event.target.files?.[0];if(!file)return;
