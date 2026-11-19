@@ -22,3 +22,8 @@ The supplied previous questions are study notes, not a verified future exam bank
 On Vercel, all study screens, questions, PDF downloads and JSON export/import work as a static application. Progress, theme, lesson completion and active sessions persist in this browser's localStorage across reloads. Different browsers/devices have separate progress; use Export backup / Import backup to transfer it. No cloud sync endpoint or sign-in is claimed by this Vercel deployment. The original Sites deployment retains its authenticated D1 cloud sync; its build scripts and API are unchanged.
 
 Run `npm run build:vercel` to verify the Vercel output locally. This build uses Node.js built-ins only.
+
+
+## Assignment question practice
+
+The Previous questions section includes the existing 58 midterm/endterm questions and 40 new questions based on Assignments 1-8 (five per assignment). Choose the Assignments set to study only those 40, or All sets to mix them with the previous questions. Practice 40 random starts a saved session with up to 40 unique questions from the current filters, with randomized answer choices and RU/EN feedback after submission. Existing questions and saved progress IDs are retained. The mock-final pool also includes an Assignment practice option and a 40-question count where available.

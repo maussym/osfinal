@@ -5,10 +5,15 @@ import { spawnSync } from 'node:child_process';
 import course from '../public/content.js';
 import { handleProgress } from '../lib/progress-model.mjs';
 
-const questions=[...course.samples,...course.practice];
+const questions=[...course.samples,...course.assignmentQuestions,...course.practice];
+assert.equal(course.assignmentQuestions.length,40);
+for(let a=1;a<=8;a++)assert.equal(course.assignmentQuestions.filter(q=>q.assignment===a).length,5);
+assert.ok(course.assignmentQuestions.every(q=>q.source==='assignment'&&q.set==='assignments'));
+const bank=[...course.samples,...course.assignmentQuestions];
+assert.equal(bank.length,98);
 assert.equal(course.samples.length,58);assert.equal(course.practice.length,30);
 assert.equal(course.cards.length,40);assert.equal(course.lessons.length,10);
-assert.equal(new Set(questions.map(q=>q.id)).size,88);
+assert.equal(new Set(questions.map(q=>q.id)).size,128);
 for(const q of questions){
   assert.ok(q.choices.length>=4 && q.choices.length<=5,q.id);
   assert.ok(q.correctAnswers.length>0 && q.correctAnswers.every(n=>Number.isInteger(n)&&n>=0&&n<q.choices.length),q.id);
@@ -40,4 +45,4 @@ assert.equal((await handleProgress(put(1,{...empty,active:{questions:[{id:'ma-1'
 const persisted=await (await handleProgress(get(),db,'alice')).json();
 assert.equal(persisted.revision,2);assert.equal(persisted.state.active.answers['ma-1'],0);
 sqlite.close();
-console.log('PASS: 88 questions, bilingual explanations, alternate valid answers, 8 Bash scripts; authenticated isolated persistence, stale-write protection and session restore.');
+console.log('PASS: 128 questions (58 previous, 40 assignment, 30 course), bilingual explanations, alternate valid answers, 8 Bash scripts; authenticated isolated persistence, stale-write protection and session restore.');
