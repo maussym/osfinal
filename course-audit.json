@@ -1,0 +1,32 @@
+{
+  "counts": {
+    "previous": 58,
+    "midtermA": 20,
+    "midtermB": 18,
+    "endterm": 20,
+    "practice": 30,
+    "flashcards": 40,
+    "lessons": 10
+  },
+  "duplicateCorrectOptions": [
+    "mb-16",
+    "e-1"
+  ],
+  "wordingClarified": [
+    "ma-5",
+    "e-5",
+    "e-7",
+    "e-17"
+  ],
+  "missingSourceQuestionNumbers": {
+    "midterm-b": [
+      14,
+      15
+    ]
+  },
+  "sourceReference": "https://github.com/maussym/daa_final",
+  "sourceCommitFiles": {
+    "app.js": "40d926096a3c71e89eac6f89a49602091803d8b5",
+    "style.css": "c52c9005151de9ef1372cd6f183018f620062485"
+  }
+}
