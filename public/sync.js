@@ -1,4 +1,5 @@
 const KEY='os-final-prep-v1',META='os-final-prep-sync-v1';
+export const localOnly = document.documentElement.dataset.progressStorage === 'local';
 let current=null, revision=0, dirty=false, version=0, saving=false, timer=null;
 let status={label:'On this device',description:'Your recent work is backed up in this browser.'};
 const object=v=>!!v&&typeof v==='object'&&!Array.isArray(v);
@@ -17,6 +18,12 @@ export async function loadProgress(){
   let meta={};try { current=JSON.parse(localStorage.getItem(KEY)||'null');meta=JSON.parse(localStorage.getItem(META)||'{}'); }catch{}
   if(!object(current))current=null;
   revision=Number.isInteger(meta?.revision)?meta.revision:0;dirty=meta?.dirty===true;
+  if(localOnly){
+    dirty=false;
+    if(current)persist();
+    announce('Saved on this device','Your progress survives reloads in this browser. Export a backup to transfer it to another device.');
+    return current;
+  }
   try {
     const remote=await request('GET');
     if(current&&dirty&&remote.revision!==revision){announce('Two saved copies','Another device changed the cloud copy. Export this local copy before importing/reconciling a backup. Your work is kept here.');}
@@ -31,11 +38,13 @@ export async function loadProgress(){
 }
 export function storeProgress(state){
   current=JSON.parse(JSON.stringify(state));dirty=true;version++;persist();
+  if(localOnly){dirty=false;persist();announce('Saved on this device','Your progress survives reloads in this browser. Export a backup to transfer it to another device.');return;}
   if(status.label==='Two saved copies')return;
   announce('Saving…','Your latest changes are backed up here and queued for cloud sync.');
   clearTimeout(timer);timer=setTimeout(flush,600);
 }
 async function flush(){
+  if(localOnly)return;
   if(saving||!dirty||!current||status.label==='Two saved copies')return;
   saving=true;
   try {
@@ -51,6 +60,7 @@ async function flush(){
   } finally {saving=false;}
 }
 export function retrySync(){
+  if(localOnly){if(current)persist();return;}
   if(status.label==='Two saved copies'){
     if(!confirm('Load the cloud copy on this device? Export your local backup first if you want to keep both.'))return;
     request('GET').then(remote=>{revision=remote.revision;if(remote.state)current=remote.state;dirty=false;persist();location.reload();}).catch(()=>announce('On this device','Could not reach cloud storage. Your local copy was kept.'));

@@ -13,3 +13,12 @@ Use the repository's install/build scripts and the Sites workflow. `npm run dev`
 This project is hosted privately. The API only accepts authenticated platform identity headers; it does not implement a separate login system. No provider secrets are included. Deploying on a different platform requires replacing the D1/auth integration; the old static DAA Vercel configuration is not sufficient for cloud progress.
 
 The supplied previous questions are study notes, not a verified future exam bank. Two equivalent answers are accepted in midterm B Q16 and endterm Q1. Endterm Q17 uses the actual lowercase `k` command. Midterm B Q14–15 were absent from the supplied file. Topic 10 is syllabus/revision, not a claimed Lecture-10. Source references and limits are available on the Materials page and in `course-audit.json`.
+
+
+## Deploy to Vercel
+
+`vercel.json` selects the Other framework preset, skips dependency installation, runs the dependency-free `node scripts/build-vercel.mjs` build, and publishes `dist-vercel`. It does not use the Cloudflare/Vinext build as a Next.js build, so a `.next/routes-manifest.json` is not required. The checked-in Vercel configuration overrides the corresponding project build settings. Use the repository root as the Vercel Root Directory.
+
+On Vercel, all study screens, questions, PDF downloads and JSON export/import work as a static application. Progress, theme, lesson completion and active sessions persist in this browser's localStorage across reloads. Different browsers/devices have separate progress; use Export backup / Import backup to transfer it. No cloud sync endpoint or sign-in is claimed by this Vercel deployment. The original Sites deployment retains its authenticated D1 cloud sync; its build scripts and API are unchanged.
+
+Run `npm run build:vercel` to verify the Vercel output locally. This build uses Node.js built-ins only.
