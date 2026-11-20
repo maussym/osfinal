@@ -5,7 +5,7 @@ export const viewport = { themeColor: "#111410", width: "device-width", initialS
 
 export const metadata: Metadata = {
   title: "OS Final Prep",
-  description: "Understand Operating Systems with bilingual notes, 58 previous questions, flashcards, Bash examples and saved practice.",
+  description: "Understand Operating Systems with bilingual notes, previous exam questions, flashcards, Bash examples and saved practice.",
   applicationName: "OS Final Prep",
   icons: {
     icon: "/mark.svg",

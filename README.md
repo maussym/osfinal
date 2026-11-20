@@ -2,7 +2,7 @@
 
 Operating Systems study application adapted from the owner's [DAA Final Prep](https://github.com/maussym/daa_final).
 
-Includes 58 previous questions (20 midterm A, 18 midterm B, 20 endterm), 30 authored practice questions, 40 bilingual flashcards, 9 lecture topics plus syllabus revision, 8 Bash examples, a PDF guide, randomized timed sessions and mistake review. Original English questions are preserved where correct; documented wording corrections and equivalent accepted answers are shown in the explanation. Set A had answers only, so its distractors are authored practice material.
+Includes 64 previous exam questions in the general pool, 80 assignment questions, 30 additional practice questions, 40 bilingual flashcards, 9 lecture topics plus syllabus revision, 8 Bash examples, a PDF guide, randomized timed sessions and mistake review. The full 20-question LMS endterm is also available as a separate set. Explanations document wording corrections and equivalent accepted answers. Set A had answers only, so its distractors are authored practice material.
 
 The frontend is in `public/study-app.js`, `public/content.js` and `app/globals.css`. Course data is already generated and ready to edit directly. The application uses a Vinext host and Cloudflare D1 for progress tied to the authenticated Site user. A browser backup protects recent work while offline. JSON export/import offers a separate portable backup. Conflicting cloud revisions are rejected rather than silently overwriting another device.
 
@@ -26,6 +26,8 @@ Run `npm run build:vercel` to verify the Vercel output locally. This build uses 
 
 ## Assignment question practice
 
-The Previous questions section includes the existing 58 midterm/endterm questions and 80 new questions based on Assignments 1-8 (ten per assignment). Choose the Assignments set to study only those 80, or All sets to mix them with the previous questions. Practice 40 random starts a saved session with up to 40 unique questions from the current filters, with randomized answer choices and RU/EN feedback after submission. Existing questions and saved progress IDs are retained. The mock-final pool also includes an Assignment practice option and a 40-question count where available.
+Choose **Endterm · LMS** in Previous questions to see the 20 LMS questions in their original order, or select the LMS pool in Mock final for a timed attempt. Fourteen questions have counterparts in the earlier endterm notes. General practice uses one version of each of those questions and includes the six additions. The notes and LMS versions keep separate question IDs so existing saved attempts still work.
+
+Choose **Assignments 1–8** for all 80 assignment questions or select an individual assignment for its ten questions. Random practice uses up to 40 questions from the current filters and shuffles the answer choices. Sessions and mistake review are saved.
 
 Each individual assignment is also selectable in the Question set filter with its ten questions. Random practice uses up to forty questions from the current filter; a single assignment therefore gives ten randomized questions.

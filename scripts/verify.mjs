@@ -10,10 +10,16 @@ assert.equal(course.assignmentQuestions.length,80);
 for(let a=1;a<=8;a++)assert.equal(course.assignmentQuestions.filter(q=>q.assignment===a).length,10);
 assert.ok(course.assignmentQuestions.every(q=>q.source==='assignment'&&q.set==='assignments'));
 const bank=[...course.samples,...course.assignmentQuestions];
-assert.equal(bank.length,138);
-assert.equal(course.samples.length,58);assert.equal(course.practice.length,30);
+const lmsEndterm=course.samples.filter(q=>q.set==='endterm-lms');
+assert.deepEqual(lmsEndterm.map(q=>q.sourceNum),Array.from({length:20},(_,i)=>i+1));
+const alternateVersions=lmsEndterm.filter(q=>q.variantOf);
+assert.equal(alternateVersions.length,14);
+assert.equal(new Set(alternateVersions.map(q=>q.variantOf)).size,alternateVersions.length);
+assert.ok(alternateVersions.every(q=>course.samples.some(original=>original.set==='endterm'&&original.id===q.variantOf&&original.text===q.text)));
+assert.equal(bank.filter(q=>!q.variantOf).length,144);
+assert.equal(course.samples.length,78);assert.equal(course.practice.length,30);
 assert.equal(course.cards.length,40);assert.equal(course.lessons.length,10);
-assert.equal(new Set(questions.map(q=>q.id)).size,168);
+assert.equal(new Set(questions.map(q=>q.id)).size,188);
 for(const q of questions){
   assert.ok(q.choices.length>=4 && q.choices.length<=5,q.id);
   assert.ok(q.correctAnswers.length>0 && q.correctAnswers.every(n=>Number.isInteger(n)&&n>=0&&n<q.choices.length),q.id);
@@ -24,6 +30,10 @@ assert.deepEqual(course.samples.find(q=>q.id==='mb-16').correctAnswers,[0,2]);
 assert.deepEqual(course.samples.find(q=>q.id==='e-1').correctAnswers,[1,2]);
 assert.equal(course.samples.find(q=>q.id==='e-17').choices[1],'k');
 assert.equal(course.samples.filter(q=>q.set==='midterm-b').length,18);
+assert.equal(lmsEndterm[10].choices[lmsEndterm[10].answer],'w');
+assert.equal(lmsEndterm[11].choices[lmsEndterm[11].answer],'k');
+assert.deepEqual(lmsEndterm[12].correctAnswers,[4,2]);
+assert.deepEqual(lmsEndterm[15].correctAnswers,[3,0]);
 for(const c of course.implementations){
   const code=c.blocks.find(b=>b.kind==='code').text;
   const r=spawnSync('bash',['-n'],{input:code,encoding:'utf8'});assert.equal(r.status,0,r.stderr);
@@ -45,4 +55,4 @@ assert.equal((await handleProgress(put(1,{...empty,active:{questions:[{id:'ma-1'
 const persisted=await (await handleProgress(get(),db,'alice')).json();
 assert.equal(persisted.revision,2);assert.equal(persisted.state.active.answers['ma-1'],0);
 sqlite.close();
-console.log('PASS: 168 questions (58 previous, 80 assignment, 30 course), bilingual explanations, alternate valid answers, 8 Bash scripts; authenticated isolated persistence, stale-write protection and session restore.');
+console.log('PASS: 188 question records, including the 20-question LMS endterm, bilingual explanations, alternate valid answers and 8 Bash scripts. Verified authenticated progress and session restore.');

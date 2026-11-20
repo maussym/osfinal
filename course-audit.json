@@ -1,22 +1,29 @@
 {
   "counts": {
-    "previous": 58,
+    "previous": 64,
     "midtermA": 20,
     "midtermB": 18,
     "endterm": 20,
+    "endtermLms": 20,
+    "endtermLmsOverlaps": 14,
     "practice": 30,
     "flashcards": 40,
     "lessons": 10
   },
   "duplicateCorrectOptions": [
     "mb-16",
-    "e-1"
+    "e-1",
+    "el-13",
+    "el-16"
   ],
   "wordingClarified": [
     "ma-5",
     "e-5",
     "e-7",
-    "e-17"
+    "e-17",
+    "el-6",
+    "el-12",
+    "el-17"
   ],
   "missingSourceQuestionNumbers": {
     "midterm-b": [

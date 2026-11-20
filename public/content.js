@@ -4381,6 +4381,518 @@ export default {
       "set": "endterm",
       "setLabel": "Endterm",
       "sourceNum": 20
+    },
+    {
+      "id": "el-1",
+      "num": 59,
+      "week": 2,
+      "text": "Which command-line tool is the modern replacement for ifconfig to display and configure network interface addresses?",
+      "choices": [
+        "route",
+        "ip addr show",
+        "ping",
+        "netstat",
+        "dig"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "Современный инструмент — ip. Команда ip addr show выводит адреса интерфейсов. Для изменения адресов у ip addr есть подкоманды add и del.",
+      "whyEn": "The modern tool is ip. The ip addr show command displays addresses, while ip addr add and ip addr del change them.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 1,
+      "variantOf": "e-3"
+    },
+    {
+      "id": "el-2",
+      "num": 60,
+      "week": 5,
+      "text": "What process ID (PID) is assigned to the initial system process (init/systemd) started by the kernel at boot time?",
+      "choices": [
+        "PID 0",
+        "PID 100",
+        "PID 1",
+        "PID 10",
+        "PID 1000"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "После инициализации kernel запускает первый user-space процесс с PID 1: init или обычно systemd.",
+      "whyEn": "The initial user-space process has PID 1.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 2,
+      "variantOf": "e-12"
+    },
+    {
+      "id": "el-3",
+      "num": 61,
+      "week": 4,
+      "text": "What permissions will a newly created directory receive if the system umask is set to 027?",
+      "choices": [
+        "640 (rw-r-----)",
+        "700 (rwx------)",
+        "755 (rwxr-xr-x)",
+        "750 (rwxr-x---)",
+        "777 (rwxrwxrwx)"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "При обычном создании каталога с базовыми правами 0777 и без ACL по умолчанию маска 0027 убирает право записи у группы и все права у остальных. Получается 0750.",
+      "whyEn": "For a standard mkdir with mode 0777 and no default ACL, umask 0027 masks out group write and all permissions for others, leaving 0750.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 3,
+      "variantOf": "e-11"
+    },
+    {
+      "id": "el-4",
+      "num": 62,
+      "week": 8,
+      "text": "When running sudo to execute a command with administrative privileges, which password is required by default?",
+      "choices": [
+        "The root account password",
+        "The group password from /etc/gshadow",
+        "No password is ever required",
+        "The system BIOS password",
+        "The invoking user's own password"
+      ],
+      "answer": 4,
+      "correctAnswers": [
+        4
+      ],
+      "whyRu": "По стандартной политике sudo запрашивает пароль вызывающего пользователя. Поведение можно изменить sudoers, также действует credential cache.",
+      "whyEn": "By default, sudo authenticates the invoking user, subject to sudoers policy and cached credentials.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 4,
+      "variantOf": "e-18"
+    },
+    {
+      "id": "el-5",
+      "num": 63,
+      "week": 5,
+      "text": "Which utility displays real-time system performance, CPU load averages, and memory consumption continuously?",
+      "choices": [
+        "uptime",
+        "top",
+        "uname",
+        "free",
+        "ps -ef"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "top регулярно обновляет список процессов и сводку по системе, включая load averages и использование памяти.",
+      "whyEn": "top refreshes process statistics, load averages and memory usage continuously.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 5
+    },
+    {
+      "id": "el-6",
+      "num": 64,
+      "week": 2,
+      "text": "Where does the SSH client normally save accepted remote host public keys for later verification?",
+      "choices": [
+        "/etc/hosts",
+        "/var/log/secure",
+        "~/.ssh/known_hosts",
+        "~/.ssh/authorized_keys",
+        "/etc/ssh/sshd_config"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "known_hosts хранит принятые публичные ключи удалённых хостов; при следующих подключениях клиент проверяет их. authorized_keys содержит ключи, которым разрешён вход к этой учётной записи.",
+      "whyEn": "Known_hosts records trusted host public keys. Authorized_keys instead authorizes user keys for login.",
+      "note": "The original question says fingerprints. The file stores the host public keys used for verification.",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 6,
+      "variantOf": "e-7",
+      "originalText": "Where does the ssh client permanently save accepted remote host RSA public key fingerprints on the local system?"
+    },
+    {
+      "id": "el-7",
+      "num": 65,
+      "week": 9,
+      "text": "When setgid is applied to a directory, what happens to new files created inside that directory?",
+      "choices": [
+        "They are automatically deleted upon logout.",
+        "They are given setuid permissions automatically.",
+        "They become read-only for all users.",
+        "They inherit the group owner of the parent directory.",
+        "They are assigned to the root user."
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "Новый файл получает группу родительской папки. Например, если у папки с setgid группа project, новые файлы тоже получают группу project.",
+      "whyEn": "New files inherit the directory’s owning group. A file created in a setgid directory owned by group project also belongs to group project.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 7
+    },
+    {
+      "id": "el-8",
+      "num": 66,
+      "week": 8,
+      "text": "Which directory contains the default files and subdirectories copied into a newly created user's home directory?",
+      "choices": [
+        "/etc/skel",
+        "/etc/login.defs",
+        "/usr/share/doc",
+        "/etc/default/useradd",
+        "/var/spool/mail"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "/etc/skel — каталог шаблонов. При создании домашней папки туда копируются стандартные файлы, например .profile.",
+      "whyEn": "/etc/skel is the default skeleton directory for files copied into a new user’s home directory.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 8
+    },
+    {
+      "id": "el-9",
+      "num": 67,
+      "week": 8,
+      "text": "Which command is used by root to create a new group account with a specific GID?",
+      "choices": [
+        "usermod -g",
+        "useradd -G",
+        "chgrp",
+        "groupmod -n",
+        "groupadd -g"
+      ],
+      "answer": 4,
+      "correctAnswers": [
+        4
+      ],
+      "whyRu": "groupadd создаёт группу; -g задаёт числовой GID. Например sudo groupadd -g 2000 research.",
+      "whyEn": "Groupadd -g creates a group with a specified numeric GID.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 9,
+      "variantOf": "e-16"
+    },
+    {
+      "id": "el-10",
+      "num": 68,
+      "week": 4,
+      "text": "What permissions are represented by the octal notation 755?",
+      "choices": [
+        "rwxrwx---",
+        "rwx------",
+        "rwxr-xr-x",
+        "r--r--r--",
+        "rw-r--r--"
+      ],
+      "answer": 2,
+      "correctAnswers": [
+        2
+      ],
+      "whyRu": "Цифры идут в порядке владелец, группа, остальные. 7 = 4+2+1 = rwx, а 5 = 4+1 = r-x. Получается rwxr-xr-x.",
+      "whyEn": "7 grants read, write and execute to the owner. Each 5 grants read and execute, giving rwxr-xr-x.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 10
+    },
+    {
+      "id": "el-11",
+      "num": 69,
+      "week": 5,
+      "text": "Which command displays current logged-in users along with system uptime and load averages?",
+      "choices": [
+        "id",
+        "last",
+        "lastb",
+        "who",
+        "w"
+      ],
+      "answer": 4,
+      "correctAnswers": [
+        4
+      ],
+      "whyRu": "w показывает, кто вошёл в систему и какие команды они запустили. В заголовке видны время работы системы (uptime) и средняя нагрузка (load averages). Обычный who показывает текущие сессии.",
+      "whyEn": "w shows logged-in users and what they are doing. Its header includes system uptime and load averages. Plain who lists current login sessions.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 11,
+      "variantOf": "e-19"
+    },
+    {
+      "id": "el-12",
+      "num": 70,
+      "week": 5,
+      "text": "In the top utility, which key is pressed to send a termination signal (such as signal 9) to a runaway process?",
+      "choices": [
+        "Q",
+        "M",
+        "R",
+        "k",
+        "H"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "В top нажми строчную k. Затем укажи PID и сигнал. По умолчанию предлагается SIGTERM, а 9 — SIGKILL.",
+      "whyEn": "Press lowercase k in top. It prompts for a PID and a signal. The default is SIGTERM, and signal 9 is SIGKILL.",
+      "note": "The LMS option D is printed as uppercase K. In procps top, the interactive command is lowercase k.",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 12,
+      "variantOf": "e-17",
+      "originalChoices": [
+        "Q",
+        "M",
+        "R",
+        "K",
+        "H"
+      ]
+    },
+    {
+      "id": "el-13",
+      "num": 71,
+      "week": 9,
+      "text": "Which command creates a symbolic (soft) link named mylink pointing to /etc/passwd?",
+      "choices": [
+        "chmod +s /etc/passwd mylink",
+        "ln /etc/passwd mylink",
+        "cp -s /etc/passwd mylink",
+        "link /etc/passwd mylink",
+        "ln -s /etc/passwd mylink"
+      ],
+      "answer": 4,
+      "correctAnswers": [
+        4,
+        2
+      ],
+      "whyRu": "ln -s сохраняет путь к target в symbolic link. Но GNU cp -s с абсолютным источником тоже создаёт symlink.",
+      "whyEn": "Ln -s is the conventional command. GNU cp -s can also create the requested symbolic link.",
+      "note": "Both E and C from the original order are accepted here on GNU/Linux.",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 13,
+      "variantOf": "e-1"
+    },
+    {
+      "id": "el-14",
+      "num": 72,
+      "week": 9,
+      "text": "What is the primary function of the sticky bit when set on a world-writable directory like /tmp?",
+      "choices": [
+        "Encrypts all temporary files automatically.",
+        "Disables subdirectories inside /tmp.",
+        "Forces all files to be executable.",
+        "Prevents non-root users from listing files.",
+        "Prevents users from deleting or renaming files owned by others."
+      ],
+      "answer": 4,
+      "correctAnswers": [
+        4
+      ],
+      "whyRu": "Sticky bit ограничивает удаление и переименование чужих записей в общем каталоге. Исключения: владелец каталога и привилегированные пользователи.",
+      "whyEn": "The sticky bit restricts deletion or renaming by other users, while allowing the file owner, directory owner, or privileged user.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 14,
+      "variantOf": "e-20"
+    },
+    {
+      "id": "el-15",
+      "num": 73,
+      "week": 4,
+      "text": "What octal value corresponds to read and write permissions (rw-) for a permission set?",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "0",
+        "7"
+      ],
+      "answer": 1,
+      "correctAnswers": [
+        1
+      ],
+      "whyRu": "rw- = read 4 + write 2 = 6. Execute отсутствует.",
+      "whyEn": "Read plus write is 4 + 2 = 6.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 15,
+      "variantOf": "e-2"
+    },
+    {
+      "id": "el-16",
+      "num": 74,
+      "week": 8,
+      "text": "Which command is used to alter password aging parameters (such as maximum days and warning days) stored in /etc/shadow?",
+      "choices": [
+        "passwd",
+        "usermod",
+        "useradd",
+        "chage",
+        "groupmod"
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3,
+        0
+      ],
+      "whyRu": "chage — стандартная команда для параметров старения пароля: -M задаёт максимальный срок, -W — период предупреждения. В Linux shadow-utils эти параметры можно изменить и через passwd -x и passwd -w.",
+      "whyEn": "chage is the dedicated password-aging tool. Use -M for the maximum age and -W for the warning period. The shadow-utils passwd also supports these changes with -x and -w.",
+      "note": "D is the dedicated tool. A is also accepted because passwd has options for both settings mentioned in the question.",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 16
+    },
+    {
+      "id": "el-17",
+      "num": 75,
+      "week": 8,
+      "text": "Why are user password hashes stored in /etc/shadow instead of /etc/passwd?",
+      "choices": [
+        "/etc/passwd is a binary file.",
+        "/etc/shadow is automatically synced across the network.",
+        "/etc/passwd does not support colon delimiters.",
+        "/etc/shadow is restricted so ordinary users cannot read password hashes.",
+        "/etc/passwd has a fixed file size limit."
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "Обычным пользователям нужны сведения об учётных записях из /etc/passwd. Доступ к хешам в /etc/shadow ограничен привилегированными пользователями и процессами.",
+      "whyEn": "/etc/passwd contains publicly readable account information. /etc/shadow restricts access to password hashes to appropriately privileged users and processes.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 17,
+      "originalText": "Why are encrypted user password hashes stored in /etc/shadow instead of /etc/passwd?",
+      "originalChoices": [
+        "/etc/passwd is a binary file.",
+        "/etc/shadow is automatically synced across the network.",
+        "/etc/passwd does not support colon delimiters.",
+        "/etc/shadow is restricted so non-root users cannot read password hashes.",
+        "/etc/passwd has a fixed file size limit."
+      ]
+    },
+    {
+      "id": "el-18",
+      "num": 76,
+      "week": 8,
+      "text": "Which command allows a user to temporarily switch their active primary group session to another group they belong to?",
+      "choices": [
+        "newgrp",
+        "chown",
+        "usermod",
+        "chgrp",
+        "groupmod"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "newgrp запускает shell с изменённой активной группой. Это не постоянное редактирование primary GID в /etc/passwd.",
+      "whyEn": "Newgrp changes the group context of a new shell session.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 18,
+      "variantOf": "e-4"
+    },
+    {
+      "id": "el-19",
+      "num": 77,
+      "week": 9,
+      "text": "Why can symbolic links target directories or cross filesystem boundaries, whereas hard links cannot?",
+      "choices": [
+        "Symbolic links require root privileges.",
+        "Symbolic links are restricted to read-only filesystems.",
+        "Hard links use binary encryption.",
+        "Symbolic links store the target pathname, while hard links point directly to an inode number on a single filesystem.",
+        "Hard links occupy zero disk space."
+      ],
+      "answer": 3,
+      "correctAnswers": [
+        3
+      ],
+      "whyRu": "Symlink хранит pathname и может указывать на каталог или другую FS. Hard link ссылается на inode в своей FS; обычным пользователям hard links на каталоги запрещены.",
+      "whyEn": "A symbolic link stores a pathname; a hard link names an inode within one filesystem.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 19,
+      "variantOf": "e-8"
+    },
+    {
+      "id": "el-20",
+      "num": 78,
+      "week": 2,
+      "text": "Which file specifies the local domain name search paths appended during DNS resolution?",
+      "choices": [
+        "/etc/resolv.conf",
+        "/etc/protocols",
+        "/etc/hosts",
+        "/etc/nsswitch.conf",
+        "/etc/sysconfig/network"
+      ],
+      "answer": 0,
+      "correctAnswers": [
+        0
+      ],
+      "whyRu": "search в resolv.conf задаёт DNS suffixes, добавляемые при поиске коротких имён. На современных системах файл часто генерируется resolver manager.",
+      "whyEn": "The search directive in resolv.conf specifies DNS search domains.",
+      "note": "",
+      "source": "sample",
+      "set": "endterm-lms",
+      "setLabel": "Endterm · LMS",
+      "sourceNum": 20,
+      "variantOf": "e-15"
     }
   ],
   "practice": [
